@@ -12,6 +12,7 @@ const URL = environment.imgPath;
 export class ImagenPipe implements PipeTransform {
 
   transform(img: string, size: string = 'w500'): string {
+    // console.log(img);
 
     if (!img) {
       return './assets/movie-theater.jpg';

@@ -10,33 +10,34 @@ import { DetalleComponent } from '../detalle/detalle.component';
 })
 export class SlideshowParesComponent implements OnInit {
   @Input() peliculas: Pelicula[] = [];
-  @Output() cargarMasPeliculas = new EventEmitter();
+  @Output() cargarMas = new EventEmitter();
 
   slideOpts = {
     slidesPerView: 3.3,
     freeMode: true,
-    spaceBetween: 0,
+    spaceBetween: -10
   };
-  constructor(private modalController: ModalController) { }
 
-  ngOnInit() { }
+  constructor(private modalCtrl: ModalController) { }
 
-
-  cargarMas() {
-
-    this.cargarMasPeliculas.emit();
+  ngOnInit() {
   }
 
-  async mostrarPelicula(id: number) {
+  onClick() {
+    this.cargarMas.emit();
+  }
 
-    const modal = await this.modalController.create({
+  async verDetalle(id: string) {
+
+    const modal = await this.modalCtrl.create({
       component: DetalleComponent,
       componentProps: {
         id
       }
-    })
+    });
 
     modal.present();
 
   }
+
 }

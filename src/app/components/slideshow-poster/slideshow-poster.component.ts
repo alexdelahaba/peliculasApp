@@ -20,14 +20,14 @@ export class SlideshowPosterComponent implements OnInit {
 
   ngOnInit() { }
 
-  async mostrarPelicula(id: number) {
+  async detalle(id: number) {
 
     const modal = await this.modalController.create({
       component: DetalleComponent,
       componentProps: {
         id
       }
-    })
+    });
 
     modal.present();
 
